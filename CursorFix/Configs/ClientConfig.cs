@@ -23,7 +23,7 @@ namespace oomtm450PuckMod_CursorFix.Configs {
         /// <summary>
         /// String, key to use to toggle the cursor.
         /// </summary>
-        public string ToggleCursorKey { get; set; }
+        public string ToggleCursorKey { get; set; } = "o";
 
         /// <summary>
         /// String, name of the mod.

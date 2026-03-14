@@ -2,9 +2,6 @@
 using oomtm450PuckMod_CursorFix.Configs;
 using oomtm450PuckMod_CursorFix.SystemFunc;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -17,7 +14,7 @@ namespace oomtm450PuckMod_CursorFix {
         /// <summary>
         /// Const string, version of the mod.
         /// </summary>
-        private const string MOD_VERSION = "1.0.0DEV";
+        private const string MOD_VERSION = "1.0.0";
         #endregion
 
         #region Fields

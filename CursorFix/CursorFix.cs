@@ -1,16 +1,16 @@
 ﻿using HarmonyLib;
-using oomtm450PuckMod_Template.Configs;
-using oomtm450PuckMod_Template.SystemFunc;
+using oomtm450PuckMod_CursorFix.Configs;
+using oomtm450PuckMod_CursorFix.SystemFunc;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Unity.Netcode;
 
-namespace oomtm450PuckMod_Template {
+namespace oomtm450PuckMod_CursorFix {
     /// <summary>
-    /// Class containing the main code for the Template patch.
+    /// Class containing the main code for the CursorFix patch.
     /// </summary>
-    public class Template : IPuckMod {
+    public class CursorFix : IPuckMod {
         #region Constants
         /// <summary>
         /// Const string, version of the mod.
@@ -409,7 +409,7 @@ namespace oomtm450PuckMod_Template {
                         _askForKick = true;
                         break;
 
-                    case ServerConfig.CONFIG_DATA_NAME: // CLIENT-SIDE : Set the server config on the client to use later for the Template logic, since the logic happens on the client.
+                    case ServerConfig.CONFIG_DATA_NAME: // CLIENT-SIDE : Set the server config on the client to use later for the CursorFix logic, since the logic happens on the client.
                         ServerConfig = ServerConfig.SetConfig(dataStr);
                         break;
 

@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Text;
 using UnityEngine;
 
-namespace oomtm450PuckMod_Template.SystemFunc {
+namespace oomtm450PuckMod_CursorFix.SystemFunc {
     public static class SystemFunc {
         public static T GetPrivateField<T>(Type typeContainingField, object instanceOfType, string fieldName) {
             return (T)typeContainingField.GetField(fieldName, BindingFlags.NonPublic | BindingFlags.Instance).GetValue(instanceOfType);

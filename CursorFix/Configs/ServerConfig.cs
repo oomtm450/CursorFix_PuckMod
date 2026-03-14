@@ -1,13 +1,13 @@
 ﻿using Newtonsoft.Json;
-using oomtm450PuckMod_Template.SystemFunc;
+using oomtm450PuckMod_CursorFix.SystemFunc;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace oomtm450PuckMod_Template.Configs {
+namespace oomtm450PuckMod_CursorFix.Configs {
     /// <summary>
-    /// Class containing the configuration from oomtm450_template_serverconfig.json used for this mod.
+    /// Class containing the configuration from oomtm450_cursorfix_serverconfig.json used for this mod.
     /// </summary>
     public class ServerConfig : IConfig {
         #region Constants

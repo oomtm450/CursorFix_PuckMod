@@ -1,6 +1,6 @@
-﻿using oomtm450PuckMod_Template.Configs;
+﻿using oomtm450PuckMod_CursorFix.Configs;
 
-namespace oomtm450PuckMod_Template.SystemFunc {
+namespace oomtm450PuckMod_CursorFix.SystemFunc {
     internal class PlayerFunc {
         #region Constants
         /// <summary>

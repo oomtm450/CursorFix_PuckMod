@@ -32,6 +32,11 @@ namespace oomtm450PuckMod_CursorFix {
         /// InputAction, action used to toggle the cursor.
         /// </summary>
         private static InputAction _toggleCursorVisibility;
+
+        /// <summary>
+        /// DateTime, last time in UTC that _toggleCursorVisibility was fired.
+        /// </summary>
+        private static DateTime _lastTimeInputWasFired;
         #endregion
 
         #region Properties
@@ -58,14 +63,23 @@ namespace oomtm450PuckMod_CursorFix {
                         return true;
 
                     if (_toggleCursorVisibility.WasPressedThisFrame()) {
+                        DateTime now = DateTime.UtcNow;
+                        if (_lastTimeInputWasFired + TimeSpan.FromMilliseconds(200) > now) {
+                            _lastTimeInputWasFired = now;
+                            return true;
+                        }
+
+                        _lastTimeInputWasFired = now;
                         if (Cursor.visible) {
-                            Cursor.visible = false; // Hides the cursor
-                            Cursor.lockState = CursorLockMode.Locked; // Locks cursor to center
+                            UIManager.Instance.isMouseActive = false;
+                            Cursor.lockState = CursorLockMode.Locked;
+                            Cursor.visible = false;
                             Logging.Log("Hidden cursor.", ClientConfig);
                         }
                         else {
-                            Cursor.lockState = CursorLockMode.None; // Releases the cursor
-                            Cursor.visible = true; // Makes the cursor visible
+                            UIManager.Instance.isMouseActive = true;
+                            Cursor.lockState = CursorLockMode.None;
+                            Cursor.visible = true;
                             Logging.Log("Shown cursor.", ClientConfig);
                         }
                     }

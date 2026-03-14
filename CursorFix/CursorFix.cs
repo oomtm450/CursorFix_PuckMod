@@ -119,6 +119,8 @@ namespace oomtm450PuckMod_CursorFix {
                 _harmony.UnpatchSelf();
 
                 _toggleCursorVisibility.Disable();
+                _toggleCursorVisibility.Dispose();
+                _toggleCursorVisibility = null;
 
                 Logging.Log($"Disabled.", ClientConfig, true);
 

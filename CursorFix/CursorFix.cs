@@ -49,6 +49,9 @@ namespace oomtm450PuckMod_CursorFix {
             [HarmonyPrefix]
             public static bool Prefix() {
                 try {
+                    if (!Application.isFocused)
+                        return true;
+
                     UIChat chat = UIChat.Instance;
 
                     if (chat.IsFocused)

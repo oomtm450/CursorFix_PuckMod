@@ -37,6 +37,11 @@ namespace oomtm450PuckMod_CursorFix {
         /// DateTime, last time in UTC that _toggleCursorVisibility was fired.
         /// </summary>
         private static DateTime _lastTimeInputWasFired;
+
+        /// <summary>
+        /// Bool, true if the cursor was toggled.
+        /// </summary>
+        private static bool _toggled = false;
         #endregion
 
         #region Properties
@@ -64,13 +69,11 @@ namespace oomtm450PuckMod_CursorFix {
 
                     if (_toggleCursorVisibility.WasPressedThisFrame()) {
                         DateTime now = DateTime.UtcNow;
-                        if (_lastTimeInputWasFired + TimeSpan.FromMilliseconds(200) > now) {
-                            _lastTimeInputWasFired = now;
+                        if (_lastTimeInputWasFired + TimeSpan.FromMilliseconds(200) > now)
                             return true;
-                        }
 
                         _lastTimeInputWasFired = now;
-                        if (Cursor.visible) {
+                        if (_toggled) {
                             UIManager.Instance.isMouseActive = false;
                             Cursor.lockState = CursorLockMode.Locked;
                             Cursor.visible = false;
@@ -82,6 +85,7 @@ namespace oomtm450PuckMod_CursorFix {
                             Cursor.visible = true;
                             Logging.Log("Shown cursor.", ClientConfig);
                         }
+                        _toggled = !_toggled;
                     }
                 }
                 catch (Exception ex) {
@@ -111,6 +115,8 @@ namespace oomtm450PuckMod_CursorFix {
                 _toggleCursorVisibility = new InputAction(binding: $"<keyboard>/#({ClientConfig.ToggleCursorKey})");
                 _toggleCursorVisibility.Enable();
 
+                _toggled = false;
+
                 Logging.Log($"Enabled.", ClientConfig, true);
                 _harmonyPatched = true;
                 return true;
@@ -137,6 +143,8 @@ namespace oomtm450PuckMod_CursorFix {
                 _toggleCursorVisibility.Disable();
                 _toggleCursorVisibility.Dispose();
                 _toggleCursorVisibility = null;
+
+                _toggled = false;
 
                 Logging.Log($"Disabled.", ClientConfig, true);
 

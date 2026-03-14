@@ -56,8 +56,9 @@ namespace oomtm450PuckMod_CursorFix {
 
                     if (_toggleCursorVisibility.WasPressedThisFrame()) {
                         if (Cursor.visible) {
-                            Cursor.lockState = CursorLockMode.Locked; // Locks cursor to center
+                            Cursor.lockState = CursorLockMode.None; // Releases the cursor
                             Cursor.visible = false; // Hides the cursor
+                            Cursor.lockState = CursorLockMode.Locked; // Locks cursor to center
                             Logging.Log("Hidden cursor.", ClientConfig);
                         }
                         else {
